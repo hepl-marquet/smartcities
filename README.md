@@ -1,7 +1,7 @@
 ## Le Projet Smartcities
 
 Dans le cadre du cours de Projet Smartcities, nous allons à l'aide du Raspberry Pi Pico W pouvoir controller différentes objets du Smart Corridor.
-Afin de dévelloper nos compétences et de nous préparer à cela, nous sommes amenés à réaliser différents exercices :
+Afin de développer nos compétences et de nous préparer à cela, nous sommes amenés à réaliser différents exercices :
 
 - [GPIO](GPIO)
 - [AD-PWM](AD-PWM)
