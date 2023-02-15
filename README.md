@@ -23,3 +23,5 @@ Thonny est un environnement simple et qui est compatible avec le RPi Pico W, pou
 Il est ensuite nécessaire de Booter le langage micropython dans le RPi Pico W, pour cela il faut brancher le Rpi en maintenant le bouton poussoir enfoncé, ainsi nous avons accès au Boot du RPi, ensuite il y a un lien dans le dossier qui permet de télécharger le langage micropython, il ne reste plus qu'à déposer l'instalateur dans le dossier du RPi.
 
 Une fois tout cela fait et que l'on est bien connecté au RPi via Thonny, il ne reste plus qu'à insérer notre code dans le RPi.
+
+[GPIO](GPIO)
