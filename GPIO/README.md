@@ -3,6 +3,7 @@
 Voici les premiers exercices de µPython, ici nous apprenons les bases de ce langage et de l'utilisation du RPi Pico W ainsi que des modules GROVE : 
 
 - LED Socket Kit
+![Image](https://robu.in/wp-content/uploads/2019/09/Grove-Button-v1.2.jpg)
 - Button
 
 ## Les différents codes
@@ -24,5 +25,5 @@ Voici les premiers exercices de µPython, ici nous apprenons les bases de ce lan
       - Nous apprennons ici la lecture d'une entrée et comment l'utiliser pour la renvoyer en sortie.
 
   - BUTTON_LIGHT
-      - Programme qui permet d'allumer/éteindre une LED à l'aide d'un bouton poussoir de la même manière qu'un interrupteur de la vie quotidienne
+      - Programme qui permet d'allumer/éteindre une LED à l'aide d'un bouton poussoir de la même manière qu'un interrupteur de la vie quotidienne.
       - On apprend à manipuler la valeur en lecture afin de créer une sortie particulière.
