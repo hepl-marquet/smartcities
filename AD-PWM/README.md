@@ -8,7 +8,7 @@ Nous apprendrons donc à utiliser la librairie PWM ainsi que les modules GROVE s
 - LED Socket Kit
 - Passive Buzzer (Bonus)
 
-## Les différents code
+## Les différents codes
 
   - AD_POTENTIOMETER_BASICS
       - Programme qui permet d'afficher la valeur lue par la pin liée au potentiomètre.
