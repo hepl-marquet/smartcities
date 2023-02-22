@@ -3,7 +3,6 @@
 Voici les premiers exercices de µPython, ici nous apprenons les bases de ce langage et de l'utilisation du RPi Pico W ainsi que des modules GROVE : 
 
 - LED Socket Kit
-![Image](https://robu.in/wp-content/uploads/2019/09/Grove-Button-v1.2.jpg)
 - Button
 
 ## Les différents codes
