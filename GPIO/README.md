@@ -7,7 +7,7 @@ Voici les premiers exercices de µPython, ici nous apprenons les bases de ce lan
 
 ## Les différents codes
 
-  - [LED_BASICS](LED_BASICS)
+  - [LED_ASICS](LED_BASICS)
       - Programme qui allume ou éteint une LED connectée au port 16.
       - On apprend comment configurer une PIN en mode sortie.
 
