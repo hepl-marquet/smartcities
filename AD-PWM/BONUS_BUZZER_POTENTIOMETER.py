@@ -1,5 +1,5 @@
 #16/02/23 vincent.marquet@student.hepl.be
-#AD_BONUSPROJECT.py
+#BONUS_BUZZER_POTENTIOMETER.py
 #Programme qui permet de controller la note de musique du buzzer à l'aide du potentiomètre
 
 #Importation des librairies
