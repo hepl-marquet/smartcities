@@ -13,5 +13,5 @@ LED_PWM.freq(100)
 
 #Boucle de lecture
 while True:
-    val = Potentiometre.read_u16() 		            #Affiche la valeur du potentiomètre
+    val = Potentiometre.read_u16() 		             #Affiche la valeur du potentiomètre
     LED_PWM.duty_u16(val)					#Pause de 1 seconde
