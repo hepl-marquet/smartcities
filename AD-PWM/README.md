@@ -22,6 +22,9 @@ Nous apprendrons donc à utiliser la librairie PWM ainsi que les modules GROVE s
   - [PWM_POTENTIOMETER_LED](PWM_POTENTIOMETER_LED.py)
       - Programme qui permet de controller la luminosité d'une LED à l'aide du potentiomètre.
       - On apprend à utiliser les commandes de bases de la librairie PWM.
+  - [PWM_LED_FADE](PWM_LED_FADE.py)
+      - Programme qui fait progressivement augmenter et diminuer l'intensité d'une LED.
+      - Utilisation d'une boucle while qui fait grandir/diminuer progressivement une valeur.
   - [BONUS_BUZZER_POTENTIOMETER](BONUS_BUZZER_POTENTIOMETER.py)
       - Programme qui permet de controller la fréquence du son que sort le buzzer à l'aide du potentiomètre.
   - [BONUS_SERVO_POTENTIOMETER](BONUS_SERVO_POTENTIOMETER.py)
