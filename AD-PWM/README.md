@@ -10,14 +10,14 @@ Nous apprendrons donc à utiliser la librairie PWM ainsi que les modules GROVE s
 
 ## Les différents codes
 
-  - AD_POTENTIOMETER_BASICS
+  - [AD_POTENTIOMETER_BASICS](AD_POTENTIOMETER_BASICS)
       - Programme qui permet d'afficher la valeur lue par la pin liée au potentiomètre.
       - On apprend comment configurer une PIN en mode entrée et à lire son entrée.
 
-  - AD_POTENTIOMETER_LED
+  - [AD_POTENTIOMETER_LED](AD_POTENTIOMETER_LED)
       - Programme qui permet de controller la LED à partir de la valeur du potentiomètre
       - On lit la donnée du potentiomètre et en fonction de sa valeur avec des conditions if, on peut allumer et éteindre la LED
 
-  - AD_POTENTIOMETER_LED2
+  - [PWM_POTENTIOMETER_LED](PWM_POTENTIOMETER_LED)
       - Programme qui permet de controller la luminosité d'une LED à l'aide du potentiomètre
       - On apprend à utiliser les commandes de bases de la librairie PWM.
