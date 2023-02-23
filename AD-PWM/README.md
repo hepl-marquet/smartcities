@@ -1,6 +1,6 @@
 ## AD-PWM
 
-Le RPI Pico dispose d'un ADC permettant de passer d'un signal analogique à un signal digital cependant il ne dispose pas d'un DAC qui permettrait de passer d'un signal digital vers un signal analogique, hors le controle de la luminosité d'une LED se fait via un signal analogique, la librairie PWM nous permet d'envoyer des signaux sous formes d'impulsions qui nous donne la possibilité de simuler des signaux sinusoidaux.
+Le RPI Pico dispose d'un ADC permettant de passer d'un signal analogique à un signal digital cependant il ne dispose pas d'un DAC qui permettrait de passer d'un signal digital vers un signal analogique, hors, le controle de la luminosité d'une LED se fait via un signal analogique, la librairie PWM nous permet d'envoyer des signaux sous formes d'impulsions qui nous donne la possibilité de simuler des signaux sinusoidaux.
 
 Nous apprendrons donc à utiliser la librairie PWM ainsi que les modules GROVE suivants :
 
