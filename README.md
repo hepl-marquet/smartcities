@@ -1,5 +1,7 @@
 ## Le Projet Smartcities
 
+![test2](https://raw.githubusercontent.com/hepl-marquet/smartcities/main/test2.png)
+
 Dans le cadre du cours de Projet Smartcities, nous allons à l'aide du Raspberry Pi Pico W pouvoir controller différentes objets du Smart Corridor.
 Afin de développer nos compétences et de nous préparer à cela, nous sommes amenés à réaliser différents exercices :
 
