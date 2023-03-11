@@ -21,12 +21,15 @@ from machine import ADC
 from utime import sleep
 
 #Déclaration de la Pin
-Potentiometre = ADC(0)              #Potentiomètre : PIN A0
+#Potentiomètre : PIN A0
+Potentiometre = ADC(0)
 
 #Boucle de lecture
 while True:
-    print(Potentiometre.read_u16()) #Affiche la valeur du potentiomètre
-    sleep(1)                        #Pause de 1 seconde
+    #Affiche la valeur du potentiomètre
+    print(Potentiometre.read_u16())
+    #Pause de 1 seconde
+    sleep(1)                        
 ```
 
   - [AD_POTENTIOMETER_LED](AD_POTENTIOMETER_LED.py)
@@ -39,13 +42,17 @@ from machine import ADC,Pin
 from utime import sleep
 
 #Déclaration des Pins
-Potentiometre = ADC(0)                    #Potentiomètre : PIN A0
-LED = Pin(16,Pin.OUT)                     #LED : PIN D16
+#Potentiomètre : PIN A0
+Potentiometre = ADC(0)
+#LED : PIN D16
+LED = Pin(16,Pin.OUT)
 
 #Boucle de lecture
 while True:
-    print(Potentiometre.read_u16())       #Affiche la valeur du potentiomètre
-    if Potentiometre.read_u16() > 30000:  #Condition pour allumer la LED : valeur du potentiomètre supérieure à 30000
+    #Affiche la valeur du potentiomètre
+    print(Potentiometre.read_u16())
+    #Condition pour allumer la LED : valeur du potentiomètre supérieure à 30000
+    if Potentiometre.read_u16() > 30000: 
         LED.value(1)
         sleep(1)
     else:
@@ -62,13 +69,17 @@ while True:
 from machine import Pin,ADC,PWM
 
 #Déclaration de la Pin
-Potentiometre = ADC(0)                            #Potentiomètre : PIN A0
-LED_PWM = PWM(Pin(18))                            #LED : PIN D18
-LED_PWM.freq(500)                                 #Frequence de la LED
+#Potentiomètre : PIN A0
+Potentiometre = ADC(0)
+#LED : PIN D18
+LED_PWM = PWM(Pin(18))
+#Frequence de la LED
+LED_PWM.freq(500)
 
 #Boucle de lecture
 while True:
-    LED_PWM.duty_u16(Potentiometre.read_u16() )   #Variation du duty cycle, cela correspond à la période pendant laquelle l'impulsion est positive par rapport à la période total d'un cycle, et on controle le duty cyvle avec la valeur du potentiomètre qui est déjà ajusté avec la range de la LED
+    #Variation du duty cycle, cela correspond à la période pendant laquelle l'impulsion est positive par rapport à la période total d'un cycle, et on controle le duty cyvle avec la valeur du potentiomètre qui est déjà ajusté avec la range de la LED
+    LED_PWM.duty_u16(Potentiometre.read_u16())
 ```
 
   - [BUZZER_SING](BUZZER_SING.py)
@@ -76,10 +87,6 @@ while True:
       - 
 
 ```
-#11/03/23 vincent.marquet@student.hepl.be
-#BUZZER_SING.py
-#Programme qui joue la mélodie "Frères Jacques" à l'aide d'un passive buzzer connecté à la pin A1
-
 from machine import Pin,PWM
 from utime import sleep
 
@@ -183,19 +190,27 @@ import utime
 from machine import Pin,PWM
 
 #Déclaration relatives à la LED
-LED_PWM=PWM(Pin(18))          #Pin utilisée pour la LED
-LED_PWM.freq(500)             #Fréquence de la LED
+#Pin utilisée pour la LED
+LED_PWM=PWM(Pin(18))
+#Fréquence de la LED
+LED_PWM.freq(500)
 
 val=0
 while True:
-    while val<65535:		    	#Boucle pour augmenter l'intensité
-        val=val+50			    	#Augmentation de l'intensité
-        utime.sleep_ms(1)   
-        LED_PWM.duty_u16(val)	#Mise à jour de l'intensité
-    while val>0:			      	#Boucle pour diminuer l'intensité
-        val=val-50			    	#Diminution de l'intensité
+    #Boucle pour augmenter l'intensité
+    while val<65535:
+        #Augmentation de l'intensité
+        val=val+50
         utime.sleep_ms(1)
-        LED_PWM.duty_u16(val)	#Mise à jour de l'intensité
+        #Mise à jour de l'intensité
+        LED_PWM.duty_u16(val)
+    #Boucle pour diminuer l'intensité
+    while val>0:
+        #Diminution de l'intensité
+        val=val-50
+        utime.sleep_ms(1)
+        #Mise à jour de l'intensité
+        LED_PWM.duty_u16(val)
 ```
 
   - [BONUS_BUZZER_POTENTIOMETER](BONUS_BUZZER_POTENTIOMETER.py)
@@ -207,30 +222,44 @@ from machine import ADC,Pin,PWM
 from utime import sleep
 
 #Déclaration des Pins et variables
-ROTARY_ANGLE_SENSOR = ADC(0)				#Potentiomètre : PIN A0
-buzzer = PWM(Pin(27))						#Buzzer :        PIN A1
+#Potentiomètre : PIN A0
+ROTARY_ANGLE_SENSOR = ADC(0)
+#Buzzer : PIN A1
+buzzer = PWM(Pin(27))
 Pot = 0
 
 #Boucle de lecture
 while True:
-    print(ROTARY_ANGLE_SENSOR.read_u16()) 	#Affiche la valeur du potentiomètre
-    Pot = ROTARY_ANGLE_SENSOR.read_u16()		#Insère la valeur dans la variable "a"
-    buzzer.duty_u16(500)				          	#Volume du buzzer
-    if 5000 >= Pot and Pot >= 0:				    #Différentes notes attribués à certaines valeurs obtenues par le potentiomètre.
-        buzzer.freq(261)				          	#DO
+    #Affiche la valeur du potentiomètre
+    print(ROTARY_ANGLE_SENSOR.read_u16())
+    #Insère la valeur dans la variable "a"
+    Pot = ROTARY_ANGLE_SENSOR.read_u16()
+    #Volume du buzzer
+    buzzer.duty_u16(500)
+    #Différentes notes attribués à certaines valeurs obtenues par le potentiomètre.
+    if 5000 >= Pot and Pot >= 0:
+        #DO
+        buzzer.freq(261)
     elif 10000 >= Pot and Pot >= 5000:
-        buzzer.freq(293)				          	#RE
+        #RE
+        buzzer.freq(293)
     elif 15000 >= Pot and Pot >= 10000:
-        buzzer.freq(329)					          #MI
+        #MI
+        buzzer.freq(329)
     elif 20000 >= Pot and Pot >= 15000:
-        buzzer.freq(349)				          	#FA
+        #FA
+        buzzer.freq(349)
     elif 25000 >= Pot and Pot >= 20000:
-        buzzer.freq(392)				          	#SOL
+        #SOL
+        buzzer.freq(392)
     elif 30000 >= Pot and Pot >= 25000:
-        buzzer.freq(440)					          #LA
+        #LA
+        buzzer.freq(440)
     elif 35000 >= Pot and Pot >= 30000:
-        buzzer.freq(493)					          #SI
-    sleep(0.5)								              #Temps de lecture de la note
+        #SI
+        buzzer.freq(493)
+    #Temps de lecture de la note
+    sleep(0.5)
 ```
 
   - [BONUS_SERVO_POTENTIOMETER](BONUS_SERVO_POTENTIOMETER.py)
@@ -246,16 +275,25 @@ Angle_Sensor = ADC(0)
 pwm_servo = PWM(Pin(20))
 
 #Variable declaration
-B = 0																        #Cette variable est utilisée pour vérifier si le potentiomètre a fort varié afin de ne faire tourner le moteur que lorsqu'il y a un "grand" changement sinon il se mettrait à jour en permanence et ce serait fort saccadé (>650)
-pwm_servo.freq(100) 												#Fréquence du servo utilisé
+#Cette variable est utilisée pour vérifier si le potentiomètre a fort varié afin de ne faire tourner le moteur que lorsqu'il y a un "grand" changement sinon il se mettrait à jour en permanence et ce serait fort saccadé (>650)
+B = 0
+#Fréquence du servo utilisé
+pwm_servo.freq(100)
 
 #Main while loop
 while True:
-    A = Angle_Sensor.read_u16()										                #Deuxième mesure effectuée pour pouvoir vérifier la différence
-    if abs(A-B) > 650:                                            #Condition pour que l'on change la position du moteur, au moins une différence de 650 entre les deux valeurs A et B
-            Angle = int((Angle_Sensor.read_u16()/6.28) + 3250)		#Conversion de la valeur du potentiomètre vers une valeur convenable pour le servo
-            print(Angle)											                    #Affichage de la valeur obtenue pour vérifier
-            pwm_servo.duty_u16(Angle)								              #Déplacement du servo
-            sleep(0.01)												                    #Petit délai pour ne pas actualiser trop vite
-            B = Angle_Sensor.read_u16()								            #B prend la valeur précédente de l'angle pour pouvoir le comparrer à A
+    #Deuxième mesure effectuée pour pouvoir vérifier la différence
+    A = Angle_Sensor.read_u16()
+    #Condition pour que l'on change la position du moteur, au moins une différence de 650 entre les deux valeurs A et B
+    if abs(A-B) > 650:
+            #Conversion de la valeur du potentiomètre vers une valeur convenable pour le servo
+            Angle = int((Angle_Sensor.read_u16()/6.28) + 3250)
+            #Affichage de la valeur obtenue pour vérifier
+            print(Angle)
+            #Déplacement du servo
+            pwm_servo.duty_u16(Angle)
+            #Petit délai pour ne pas actualiser trop vite
+            sleep(0.01)
+            #B prend la valeur précédente de l'angle pour pouvoir le comparrer à A
+            B = Angle_Sensor.read_u16()
 ```
