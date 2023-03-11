@@ -10,6 +10,8 @@ Afin de développer nos compétences et de nous préparer à cela, nous sommes a
 - [Sensors](Sensors)
 - [Network](Network)
 
+![test](https://raw.githubusercontent.com/hepl-marquet/smartcities/main/testgithub.png)
+
 ## Le Raspberry Pi Pico W
 
 ![image](https://user-images.githubusercontent.com/124889426/217868716-ea079240-9f27-4855-9209-1cfc36a843a4.png)
