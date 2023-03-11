@@ -1,19 +1,29 @@
-## AD-PWM
+# Introduction
 
-Le RPI Pico dispose d'un ADC permettant de passer d'un signal analogique à un signal digital cependant il ne dispose pas d'un DAC qui permettrait de passer d'un signal digital vers un signal analogique, hors, le controle de la luminosité d'une LED se fait via un signal analogique, la librairie PWM nous permet d'envoyer des signaux sous formes d'impulsions qui nous donne la possibilité de simuler des signaux sinusoidaux.
-
-Nous apprendrons donc à utiliser la librairie PWM ainsi que les modules GROVE suivants :
+Dans cette partie, apprendrons donc à utiliser les pins avec le mode PWM ainsi que les modules GROVE suivants :
 
 - [Rotary Angle Sensor](https://wiki.seeedstudio.com/Grove-Rotary_Angle_Sensor/)
 - [LED Socket Kit](https://wiki.seeedstudio.com/Grove-LED_Socket_Kit/)
-- [Passive Buzzer (Bonus)](https://wiki.seeedstudio.com/Grove_passive_Buzzer/)
+- [Passive Buzzer](https://wiki.seeedstudio.com/Grove_passive_Buzzer/)
 - [Servo (Bonus)](https://wiki.seeedstudio.com/Grove-Servo/)
 
-## Les différents codes
+## AD-PWM
 
-  - [AD_POTENTIOMETER_BASICS](AD_POTENTIOMETER_BASICS.py)
-      - Programme qui permet d'afficher la valeur lue par la pin liée au potentiomètre.
-      - On apprend comment configurer une PIN en mode entrée et à lire son entrée.
+Le RPI Pico dispose d'un ADC permettant de passer d'un signal analogique à un signal digital, c'est ce qui permet de lire les valeurs par exemple d'un potentiomètre ou d'autres valeurs physiques et de les transformer en valeurs digitales.
+
+## PWM
+
+![image](https://user-images.githubusercontent.com/124889426/224515782-3c5ac8d0-1af8-4ada-b20b-8fd3fbca585e.png)
+
+Sur l'image ci-dessus, on peut voir différents signaux PWM, ce qui les rend différents sont leurs duty cycle, c'est en fait le pourcentage de temps que le signal est positif sur une période donnée, ce genre de signaux permettent de faire varier la moyenne du signal à partir de pin tout ou rien, voici un exemple :
+
+- Si nous avons une sortie de 5V et que nous lui attribuons un signal PWM avec un duty cycle de 50% alors en sortie on aura en moyenne 2,5V, si on change maintenant le duty cycle à 75% on aura 3,75V en sortie et si on change encore à 100% on retrouve les 5V.
+
+# Les différents codes
+
+## [AD_POTENTIOMETER_BASICS](AD_POTENTIOMETER_BASICS.py)
+- Programme qui permet d'afficher la valeur lue par la pin liée au potentiomètre.
+- On voit que pour lire la valeur du potentiomètre nous avons utilisé un ADC.
 
 ```
 #Importation des librairies
@@ -32,9 +42,9 @@ while True:
     sleep(1)                        
 ```
 
-  - [AD_POTENTIOMETER_LED](AD_POTENTIOMETER_LED.py)
-      - Programme qui permet de controller la LED à partir de la valeur du potentiomètre.
-      - On lit la donnée du potentiomètre et en fonction de sa valeur avec des conditions if, on peut allumer et éteindre la LED.
+## [AD_POTENTIOMETER_LED](AD_POTENTIOMETER_LED.py)
+- Programme qui permet de controller la LED à partir de la valeur du potentiomètre.
+- On lit la donnée du potentiomètre et en fonction de sa valeur avec des conditions if, on peut allumer et éteindre la LED.
 
 ```
 #Importation des librairies
@@ -60,9 +70,11 @@ while True:
         sleep(1)
 ```
 
-  - [PWM_POTENTIOMETER_LED](PWM_POTENTIOMETER_LED.py)
-      - Programme qui permet de controller la luminosité d'une LED à l'aide du potentiomètre.
-      - On apprend à utiliser les commandes de bases de la librairie PWM.
+## [PWM_POTENTIOMETER_LED](PWM_POTENTIOMETER_LED.py)
+- Programme qui permet de controller la luminosité d'une LED à l'aide du potentiomètre.
+- On commence par lire la valeur du potentiomètre à l'aide de l'ADC.
+- On crée un signal PWM de sortie vers la LED.
+- On modifie la valeur de ce signal à partir de la valeur lue au potentiomètre (Dans certains cas il faut adapter les extrémités des valeurs ensemble, il y a un exemple plus bas avec le servo moteur)
 
 ```
 #Importation des librairies
@@ -82,9 +94,15 @@ while True:
     LED_PWM.duty_u16(Potentiometre.read_u16())
 ```
 
-  - [BUZZER_SING](BUZZER_SING.py)
-      - Programme qui joue la mélodie "Frères Jacques" à l'aide d'un passive buzzer connecté à la pin A1
-      - 
+## [BUZZER_SING](BUZZER_SING.py)
+- Programme qui joue la mélodie "Frères Jacques" à l'aide d'un passive buzzer connecté à la pin A1
+- On définit un signal PWM sortant vers le buzzer.
+- On choisit un volume.
+- On crée des définitions pour chaques notes contenant :
+  - La commande pour faire jouer la note au buzzer
+  - La commande pour définir la fréquence de la note
+  - La durée de la note
+  - À partir de la partition, on peut ensuite recréer la musique souhaitée en oubliant pas de mettre en paramètre, lors de l'appel à la fonction, la durée de la note en secondes.
 
 ```
 from machine import Pin,PWM
@@ -180,9 +198,10 @@ while True:
     DO(0.5)
 ```
 
-  - [PWM_LED_FADE](PWM_LED_FADE.py)
-      - Programme qui fait progressivement augmenter et diminuer l'intensité d'une LED.
-      - Utilisation d'une boucle while qui fait grandir/diminuer progressivement une valeur.
+## [PWM_LED_FADE](PWM_LED_FADE.py)
+- Programme qui fait progressivement augmenter et diminuer l'intensité d'une LED.
+- On définit un signal PWM pour la pin de la LED.
+- On crée une boucle qui va faire varier le duty cycle du signal PWM.
 
 ```
 #Importation des librairies
@@ -213,8 +232,10 @@ while True:
         LED_PWM.duty_u16(val)
 ```
 
-  - [BONUS_BUZZER_POTENTIOMETER](BONUS_BUZZER_POTENTIOMETER.py)
-      - Programme qui permet de controller la fréquence du son que sort le buzzer à l'aide du potentiomètre.
+## [BONUS_BUZZER_POTENTIOMETER](BONUS_BUZZER_POTENTIOMETER.py)
+- Programme qui permet de controller la fréquence du son que sort le buzzer à l'aide du potentiomètre.
+- On lit la valeur du potentiomètre.
+- On crée plusieurs conditions dans la range du potentiomètre pour définir des intervalles dans lesquelles les différentes notes sont jouées
 
 ```
 #Importation des librairies
@@ -262,8 +283,11 @@ while True:
     sleep(0.5)
 ```
 
-  - [BONUS_SERVO_POTENTIOMETER](BONUS_SERVO_POTENTIOMETER.py)
-      - Programme qui permet de controller l'angle du servo moteur à l'aide du potentiomètre.
+## [BONUS_SERVO_POTENTIOMETER](BONUS_SERVO_POTENTIOMETER.py)
+- Programme qui permet de controller l'angle du servo moteur à l'aide du potentiomètre.
+- On lit la valeur du potentiomètre.
+- On l'adapte à la range de fonctionnement du servo.
+- On envoie la valeur au servo.
 
 ```
 #Importation des librairies
