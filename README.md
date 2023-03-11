@@ -1,16 +1,14 @@
-## Le Projet Smartcities
-
 ![test2](https://raw.githubusercontent.com/hepl-marquet/smartcities/main/smartcities1.png)
 
-Dans le cadre du cours de Projet Smartcities, nous allons à l'aide du Raspberry Pi Pico W pouvoir controller différentes objets du Smart Corridor.
+Dans le cadre du cours de Projet Smartcities, nous allons à l'aide du Raspberry Pi Pico W pouvoir controller différents objets du Smart Corridor.
 Afin de développer nos compétences et de nous préparer à cela, nous sommes amenés à réaliser différents exercices :
 
-- [GPIO](GPIO)
-- [AD-PWM](AD-PWM)
-- [LCD](LCD)
-- [LED_neo](LED_neo)
-- [Sensors](Sensors)
-- [Network](Network)
+- [GPIO](GPIO) : LED simple, bouton-poussoir, interruption.
+- [AD-PWM](AD-PWM) : Lecture du potentiomètre, PWM (LED, musique, servo).
+- [LCD](LCD) : Documentation des fonctions de la librairie, affichage de la valeur du potentiomètre.
+- [LED_neo](LED_neo) : utilisation des LEDs néopixel, documentation des fonctions de la librairie, arc-en-ciel.
+- [Sensors](Sensors) : Température et humidité, luminosité, PIR.
+- [Network](Network) : Accès réseau avec le RPi Pico.
 
 ![test](https://raw.githubusercontent.com/hepl-marquet/smartcities/main/testgithub.png)
 
