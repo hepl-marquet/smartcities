@@ -45,7 +45,7 @@ Pour installer MicroPython sur le RPi Pico W il faut booter le langage dans le R
 
 ![Thonny](https://user-images.githubusercontent.com/124889426/224481630-174fba12-2a34-4edd-9fc5-f1627cf59e02.png)
 
-Thonny est un IDE (environnement de développement intégré) pour python. Il présente l'avantage d'être facile d'accès pour les débutants et est compatible avec le RPi Pico W, pour pouvoir se connecter au RPi il suffit d'aller dans Outils>Option>Interpréteur, sélectionner MicroPython (Rapsberry Pi Pico). Une fois cela fait, le RPi est prêt à recevoir vos codes en MicroPython.
+Thonny est un IDE (environnement de développement intégré) pour python. Il présente l'avantage d'être facile d'accès pour les débutants et est compatible avec le RPi Pico W, pour l'installer il suffit d'aller sur [thonny.org](https://thonny.org/), de télécharger l'installateur et le lancer, pour pouvoir se connecter au RPi il suffit d'aller dans Outils>Option>Interpréteur, sélectionner MicroPython (Rapsberry Pi Pico). Une fois cela fait, le RPi est prêt à recevoir vos codes en MicroPython.
 
 ![Grove](https://user-images.githubusercontent.com/124889426/224482024-3f9c475f-385a-4d7d-a5f9-2b89fc40c02e.png)
 
