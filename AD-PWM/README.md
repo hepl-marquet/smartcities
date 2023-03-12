@@ -56,6 +56,8 @@ while True:
 
 ![Potentio](https://user-images.githubusercontent.com/124889426/224516955-94f55e6e-70ab-4590-90ce-424c1e930fe0.jpg)
 
+![Console](https://user-images.githubusercontent.com/124889426/224517692-fc6e93a6-f567-4516-a99c-ddcaaba63c91.png)
+
 
 ## [AD_POTENTIOMETER_LED](AD_POTENTIOMETER_LED.py)
 - Programme qui permet de controller la LED à partir de la valeur du potentiomètre.
