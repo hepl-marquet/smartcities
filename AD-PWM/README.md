@@ -1,13 +1,13 @@
-# Introduction
+![Introduction](https://user-images.githubusercontent.com/124889426/224516611-bf5abe71-4ac2-4c32-b8ba-995c072dffa6.png)
 
-Dans cette partie, apprendrons donc à utiliser les pins avec le mode PWM ainsi que les modules GROVE suivants :
+Dans cette partie, nous apprendrons à utiliser les pins avec le mode PWM ainsi que les modules GROVE suivants :
 
 - [Rotary Angle Sensor](https://wiki.seeedstudio.com/Grove-Rotary_Angle_Sensor/)
 - [LED Socket Kit](https://wiki.seeedstudio.com/Grove-LED_Socket_Kit/)
 - [Passive Buzzer](https://wiki.seeedstudio.com/Grove_passive_Buzzer/)
 - [Servo (Bonus)](https://wiki.seeedstudio.com/Grove-Servo/)
 
-## AD-PWM
+## ADC
 
 Le RPI Pico dispose d'un ADC permettant de passer d'un signal analogique à un signal digital, c'est ce qui permet de lire les valeurs par exemple d'un potentiomètre ou d'autres valeurs physiques et de les transformer en valeurs digitales.
 
@@ -19,11 +19,23 @@ Sur l'image ci-dessus, on peut voir différents signaux PWM, ce qui les rend dif
 
 - Si nous avons une sortie de 5V et que nous lui attribuons un signal PWM avec un duty cycle de 50% alors en sortie on aura en moyenne 2,5V, si on change maintenant le duty cycle à 75% on aura 3,75V en sortie et si on change encore à 100% on retrouve les 5V.
 
-# Les différents codes
+![LesDiffCodes](https://user-images.githubusercontent.com/124889426/224516616-8f99617f-5f48-4130-a1fd-424198b55f48.png)
+
+## Quelques commandes utiles :
+
+### duty_16()
+Permet de définir le duty cycle d'un signal PWM.
+
+### read_u16()
+Permet de lire la valeur d'une entrée.
+
+### freq()
+Permet de définir la fréquence du signal PWM, en fonction du module utilisé, on devra choisir des fréquences différentes.
 
 ## [AD_POTENTIOMETER_BASICS](AD_POTENTIOMETER_BASICS.py)
 - Programme qui permet d'afficher la valeur lue par la pin liée au potentiomètre.
 - On voit que pour lire la valeur du potentiomètre nous avons utilisé un ADC.
+- Il faut également se servir de la commande read_u16 pour pouvoir lire la donnée.
 
 ```
 #Importation des librairies
@@ -41,6 +53,9 @@ while True:
     #Pause de 1 seconde
     sleep(1)                        
 ```
+
+![Potentio](https://user-images.githubusercontent.com/124889426/224516955-94f55e6e-70ab-4590-90ce-424c1e930fe0.jpg)
+
 
 ## [AD_POTENTIOMETER_LED](AD_POTENTIOMETER_LED.py)
 - Programme qui permet de controller la LED à partir de la valeur du potentiomètre.
@@ -70,6 +85,10 @@ while True:
         sleep(1)
 ```
 
+
+https://user-images.githubusercontent.com/124889426/224517018-c3c433d0-7e1b-4cff-a88c-e118667bdc08.mp4
+
+
 ## [PWM_POTENTIOMETER_LED](PWM_POTENTIOMETER_LED.py)
 - Programme qui permet de controller la luminosité d'une LED à l'aide du potentiomètre.
 - On commence par lire la valeur du potentiomètre à l'aide de l'ADC.
@@ -93,6 +112,10 @@ while True:
     #Variation du duty cycle, cela correspond à la période pendant laquelle l'impulsion est positive par rapport à la période total d'un cycle, et on controle le duty cyvle avec la valeur du potentiomètre qui est déjà ajusté avec la range de la LED
     LED_PWM.duty_u16(Potentiometre.read_u16())
 ```
+
+
+https://user-images.githubusercontent.com/124889426/224517029-f45491f8-98ab-4d90-8a5d-fe3cd2c12969.mp4
+
 
 ## [BUZZER_SING](BUZZER_SING.py)
 - Programme qui joue la mélodie "Frères Jacques" à l'aide d'un passive buzzer connecté à la pin A1
@@ -197,6 +220,9 @@ while True:
     SOL(0.25)
     DO(0.5)
 ```
+
+![Buzzer](https://user-images.githubusercontent.com/124889426/224517057-d88c9429-36e4-484e-ab87-c807c7dbd1ff.jpg)
+
 
 ## [PWM_LED_FADE](PWM_LED_FADE.py)
 - Programme qui fait progressivement augmenter et diminuer l'intensité d'une LED.
