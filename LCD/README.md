@@ -34,66 +34,51 @@ Tout en étant connecté à notre RPi, on ouvre notre librairie en l’occurrenc
 ### Les différentes fonctions présentes dans cette librairie sont :
 
 ```display()```
-
-Elle active l’affichage
+Active l’affichage
 
 ```no_display()```
-
-Elle désactive l’affichage
+Désactive l’affichage
 
 ```clear()```
-
-Elle efface ce qui est écrit et remet le curseur au tout début.
+Efface ce qui est écrit et remet le curseur au tout début.
 
 ```setCursor(col, row)```
-
-Elle permet de déplacer le curseur à un endroit précis, elle prend deux paramètres :
+Permet de déplacer le curseur à un endroit précis, elle prend deux paramètres :
 
   -	Col pour la colonne
   -	Row pour la rangée
   
 ```print(text)```
-
-Elle affiche les caractères que nous avons écrit en paramètre.
+Affiche les caractères que nous avons écrit en paramètre.
 
 ```home()```
-
 Permet de remettre le curseur à la position 0
 
 ```cursor()```
-
 Affiche le curseur
 
 ```no_cursor()```
-
 Cache le curseur
 
 ```blink()```
-
 Fait clignoter le curseur
 
 ```no_blink()```
-
 Arrete de faire cligonter le curseur
 
 ```autoscroll()```
-
 Fait déplacer le texte automatiquement
 
 ```no_autoscroll()```
-
 Arrete de déplacer le texte automatiquemenent
 
 ```create_char()```
-
 Permet de créer un caractère
 
 ```command()```
-
 Envoie la commande au LCD
 
 ```write()```
-
 Permet d'écrire un caractère spécial à l'aide de [cette table](https://www.waveshare.com/datasheet/LCD_en_PDF/LCD1602.pdf) page 14.
 
 ![LesDiffCodes](https://user-images.githubusercontent.com/124889426/224516616-8f99617f-5f48-4130-a1fd-424198b55f48.png)
