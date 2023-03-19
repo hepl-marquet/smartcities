@@ -24,9 +24,6 @@ cette commande prend en paramètres :
 -	sda : pin qui sera utilisée pour transférer les données.
 -	freq : c’est la fréquence maximale qui sera utilisée pour la communication et dépend du module que nous utiliserons.
 
-
-![LesDiffCodes](https://user-images.githubusercontent.com/124889426/224516616-8f99617f-5f48-4130-a1fd-424198b55f48.png)
-
 ## La librairie lcd1602 :
 
 Pour utiliser ce module nous aurons besoin de la librairie lcd1602 qui est fournie avec le [guide]( https://files.seeedstudio.com/wiki/Grove_Shield_for_Pi_Pico_V1.0/Begiinner's-Guide-for-Raspberry-Pi-Pico.pdf) qui nous a été mis à disposition en suivant [ce lien]( https://github.com/TinkerGen/Pico-micropython).
@@ -98,6 +95,8 @@ Envoie la commande au LCD
 ```write()```
 
 Permet d'écrire un caractère spécial à l'aide de [cette table](https://www.waveshare.com/datasheet/LCD_en_PDF/LCD1602.pdf) page 14.
+
+![LesDiffCodes](https://user-images.githubusercontent.com/124889426/224516616-8f99617f-5f48-4130-a1fd-424198b55f48.png)
 
 ## [LCD_BASICS](LCD_BASICS.py)
 - Programme qui permet d'afficher un message sur l'écran LCD
