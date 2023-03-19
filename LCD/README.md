@@ -88,20 +88,30 @@ Permet d'écrire un caractère spécial à l'aide de [cette table](https://www.w
 
 ```
 #Importation des librairies
-from lcd1602 import LCD1602 #Librairie pour l'écran LCD
-from machine import I2C,Pin #Librairie pour la configuration des pins
-from utime import sleep     #Librairie pour le temps
+#Librairie pour l'écran LCD
+from lcd1602 import LCD1602
+#Librairie pour la configuration des pins
+from machine import I2C,Pin
+#Librairie pour le temps
+from utime import sleep     
 
 #Configuration des Pins en utilisant le protocole I2C
-i2c = I2C(1, scl=Pin(7), sda=Pin(6), freq=400000) #On choisit l'index 1, pour la synchronisation la pin 7, pour les données la pin 6 et une fréquence de 400000Hz
+#On choisit l'index 1, pour la synchronisation la pin 7, pour les données la pin 6 et une fréquence de 400000Hz
+i2c = I2C(1, scl=Pin(7), sda=Pin(6), freq=400000) 
 #On définit l'écran LCD
-screen = LCD1602(i2c, 2, 16) #Le type de données, le nombre de rangées et le nombre de colonnes.
+#Les paramètres sont : le type de données, le nombre de rangées et le nombre de colonnes.
+screen = LCD1602(i2c, 2, 16) 
 
-screen.display() #On affiche l'écran
-screen.clear() #On efface ce qui était écrit
-screen.print('Hello World') #On écrit "Hello World" (Ceci est à titre d'exemple, si l'on souhaite on peut modifier mais attention à ne pas dépasser le nombre de caractères sur la rangée.)
-screen.setCursor(0, 2) #On déplace le curseur à la deuxième rangée
-screen.print('By Marquet') #On écrit ce que l'on souhaite afficher.               
+#On affiche l'écran
+screen.display() 
+#On efface ce qui était écrit
+screen.clear() 
+#On écrit "Hello World" (Ceci est à titre d'exemple, si l'on souhaite on peut modifier mais attention à ne pas dépasser le nombre de caractères sur la rangée.)
+screen.print('Hello World') 
+#On déplace le curseur à la deuxième rangée
+screen.setCursor(0, 2) 
+#On écrit ce que l'on souhaite afficher.   
+screen.print('By Marquet')             
 ```
 
 ![Hello](https://user-images.githubusercontent.com/124889426/226183742-a7f32bf6-b1c6-4d34-9b06-b6495b97c8b4.jpg)
@@ -111,24 +121,35 @@ screen.print('By Marquet') #On écrit ce que l'on souhaite afficher.
 
 ```
 #Importation des librairies
-from lcd1602 import LCD1602 #Librairie pour l'écran LCD
-from machine import I2C,Pin,ADC #Librairie pour la configuration des pins
-from utime import sleep     #Librairie pour le temps
+#Librairie pour l'écran LCD
+from lcd1602 import LCD1602 
+#Librairie pour la configuration des pins
+from machine import I2C,Pin,ADC 
+ #Librairie pour le temps
+from utime import sleep    
 
 #Configuration des Pins en utilisant le protocole I2C
-i2c = I2C(1, scl=Pin(7), sda=Pin(6), freq=400000) #On choisit l'index 1, pour la synchronisation la pin 7, pour les données la pin 6 et une fréquence de 400000Hz
+#On choisit l'index 1, pour la synchronisation la pin 7, pour les données la pin 6 et une fréquence de 400000Hz
+i2c = I2C(1, scl=Pin(7), sda=Pin(6), freq=400000) 
 #On définit l'écran LCD
-screen = LCD1602(i2c, 2, 16) #Le type de données, le nombre de rangées et le nombre de colonnes.
+#Les paramètres sont : le type de données, le nombre de rangées et le nombre de colonnes.
+screen = LCD1602(i2c, 2, 16) 
 #Ajout du potentiomètre
 Potentiometer = ADC(0)
 
 while True :
-    sleep(1) #On fait une pause d'une seconde
-    screen.clear() #On efface l'écran et le curseur revient à la position initiale
-    screen.print('Angle') #On affiche "Angle"
-    screen.setCursor(0,2) #On déplace le curseur à la deuxième rangée
-    screen.print(str(round(Potentiometer.read_u16()/65355*300-1))) #Affichage de l'angle, attention à bien transformer la donnée lue en string car la fonction print() du lcd ne prend que les string en paramètres. il faut également retransformer la valeur lue par l'adc en degrés grâce à cette formule : Valeur/65535*300, je fais -1 car je voulais arriver à un résultat compris entre [0,300], avec mon round() qui permet d'arrondir vers le haut ce n'était pas possible mais ainsi c'est réglé.
-    screen.write(0b11011111) #On ajoute le symbole ° à la fin de la valeur
+    #On fait une pause d'une seconde
+    sleep(1) 
+    #On efface l'écran et le curseur revient à la position initiale
+    screen.clear() 
+    #On affiche "Angle"
+    screen.print('Angle') 
+    #On déplace le curseur à la deuxième rangée
+    screen.setCursor(0,2) 
+    #Affichage de l'angle, attention à bien transformer la donnée lue en string car la fonction print() du lcd ne prend que les string en paramètres. il faut également retransformer la valeur lue par l'adc en degrés grâce à cette formule : Valeur/65535*300, je fais -1 car je voulais arriver à un résultat compris entre [0,300], avec mon round() qui permet d'arrondir vers le haut ce n'était pas possible mais ainsi c'est réglé.
+    screen.print(str(round(Potentiometer.read_u16()/65355*300-1))) 
+    #On ajoute le symbole ° à la fin de la valeur
+    screen.write(0b11011111) 
 ```
 
 https://user-images.githubusercontent.com/124889426/226183720-d30e2a1e-c32a-45d6-9ded-114a92a69586.mp4
