@@ -23,13 +23,13 @@ Sur l'image ci-dessus, on peut voir différents signaux PWM, ce qui les rend dif
 
 ## Quelques commandes utiles :
 
-### duty_16()
+```duty_16()```
 Permet de définir le duty cycle d'un signal PWM.
 
-### read_u16()
+```read_u16()```
 Permet de lire la valeur d'une entrée.
 
-### freq()
+```freq()```
 Permet de définir la fréquence du signal PWM, en fonction du module utilisé, on devra choisir des fréquences différentes.
 
 ## [AD_POTENTIOMETER_BASICS](AD_POTENTIOMETER_BASICS.py)
