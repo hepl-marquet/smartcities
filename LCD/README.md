@@ -125,7 +125,7 @@ screen.print('By Marquet')
 from lcd1602 import LCD1602 
 #Librairie pour la configuration des pins
 from machine import I2C,Pin,ADC 
- #Librairie pour le temps
+#Librairie pour le temps
 from utime import sleep    
 
 #Configuration des Pins en utilisant le protocole I2C
