@@ -9,13 +9,13 @@ Voici les premiers exercices de µPython, ici nous apprenons les bases de ce lan
 
 ## Quelques Commandes :
 
-### PIN
+```PIN```
 Permet de configurer une PIN soit en sortie soit en entrée, ce qui est nécessaire lorsqu'on veut connecter un module par exemple.
 
-### toggle()
+```toggle()```
 Permet de passer de ON à OFF et vice-versa.
 
-### value()
+```value()```
 Permet de définir la valeur d'une sortie, 1 signifie ON et 0 signifie OFF ou de "lire" la valeur d'une entrée pour pouvoir la mettre dans une variable par exemple.
 
 ## [LED_BASICS](LED_BASICS.py)
