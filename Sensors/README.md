@@ -25,7 +25,7 @@ Les capteurs PIR (Passive infrared) sont des capteurs de mouvement, ils se serve
 
 ![image](https://user-images.githubusercontent.com/124889426/230343354-06b4592c-f70e-4b84-87f5-0a704e9b1de1.png)
 
-## [DHT11_BASICS](DHT11_BASICS.py)
+## [DHT11_BASICS](DHT11_Basics.py)
 
 - Programme qui permet de lire la température et l'humidité ambiante.
 - On utilise la librairie [dht11](https://github.com/TinkerGen/Pico-micropython/blob/master/dht11.py) qu'il faut préalablement enregistrer sur le RPi.
