@@ -183,7 +183,7 @@ while True:
 
 ![image](https://user-images.githubusercontent.com/124889426/233390227-3d566af0-1b36-4a1e-91eb-71b235fddfeb.png)
 
-[LIGHT_SENSOR_BUZZ](LIGHT_SENSOR_BUZZ.py)
+[LIGHT_SENSOR_BUZZER](LIGHT_SENSOR_BUZZER.py)
 
 - Programme qui permet de faire sonner le buzzer lorsque la lumière est allumée.
 
