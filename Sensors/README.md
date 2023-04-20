@@ -25,7 +25,9 @@ Les capteurs PIR (Passive infrared) sont des capteurs de mouvement, ils se serve
 
 ![image](https://user-images.githubusercontent.com/124889426/230343354-06b4592c-f70e-4b84-87f5-0a704e9b1de1.png)
 
-## [DHT11_BASICS](DHT11_Basics.py)
+### HUMIDITY & TEMPERATURE SENSOR
+
+[DHT11_BASICS](DHT11_Basics.py)
 
 - Programme qui permet de lire la température et l'humidité ambiante.
 - On utilise la librairie [dht11](https://github.com/TinkerGen/Pico-micropython/blob/master/dht11.py) qu'il faut préalablement enregistrer sur le RPi.
@@ -53,7 +55,9 @@ while True:
 
 ![image](https://user-images.githubusercontent.com/124889426/230345274-1d18e5b8-6a4d-480f-a1b9-890534b72dab.png)
 
-## [SOUND_SENSOR_BASICS](SOUND_SENSOR_BASICS.py)
+### SOUND SENSOR
+
+[SOUND_SENSOR_BASICS](SOUND_SENSOR_BASICS.py)
 
 - Programme qui permet d'afficher la lecture du capteur son.
 - Le capteur de son a une range de 0 à 65535 dû à l'adc 16 bits.
@@ -76,7 +80,7 @@ while True:
 
 On observe une multitude de valeurs obtenues par le capteur de son notamment plusieurs 0 ce qui peut parfois être dérangeant, nous verrons dans le prochain code une manière de palier à cela.
 
-## [SOUND_SENSOR_AVERAGE](SOUND_SENSOR_AVERAGE.py)
+[SOUND_SENSOR_AVERAGE](SOUND_SENSOR_AVERAGE.py)
 
 - Programme qui permet d'afficher la lecture du capteur son.
 - Le capteur de son a une range de 0 à 65535 dû à l'adc 16 bits.
@@ -112,7 +116,7 @@ Ci-dessus on observe que les valeurs ne sont plus égales à 0, en revanche elle
 
 ```int()```
 
-## [SOUND_SENSOR_LED](SOUND_SENSOR_LED.py)
+[SOUND_SENSOR_LED](SOUND_SENSOR_LED.py)
 
 - Programme qui permet d'allumer plus ou  moins fort une LED en fonction du volume ambiant.
 
@@ -154,7 +158,9 @@ https://user-images.githubusercontent.com/124889426/233386959-f42f22ea-0a71-4bf8
 
 NB : Il est important de noter que je n'ai pas mit de delay ou autre dans ma boucle de lecture et il faut faire attention à ne pas faire tourner en boucle à une telle vitesse un grand nombre de capteurs au risque de faire crasher le CPU.
 
-## [LIGHT_SENSOR_BASICS](LIGHT_SENSOR_BASICS.py)
+### LIGHT SENSOR
+
+[LIGHT_SENSOR_BASICS](LIGHT_SENSOR_BASICS.py)
 
 - Programme qui permet d'afficher la valeur lue par le capteur de luminosité.
 
@@ -177,7 +183,7 @@ while True:
 
 ![image](https://user-images.githubusercontent.com/124889426/233390227-3d566af0-1b36-4a1e-91eb-71b235fddfeb.png)
 
-## [LIGHT_SENSOR_BUZZ](LIGHT_SENSOR_BUZZ.py)
+[LIGHT_SENSOR_BUZZ](LIGHT_SENSOR_BUZZ.py)
 
 - Programme qui permet de faire sonner le buzzer lorsque la lumière est allumée.
 
@@ -205,3 +211,74 @@ while True:
     #On coupe le volume
     Buzzer.duty_u16(0)
 ```
+
+### PIR SENSOR
+
+[PIR_SENSOR_BASICS](PIR_SENSOR_BASICS.py)
+
+- Programme qui permet de détecter un mouvement et de le dire dans la console toutes les 8 secondes.
+
+```
+#Importation des librairies
+from machine import Pin
+from utime import sleep
+
+#Déclaration des Pins et variables
+#Capteur de lumière pin ADC(0)
+PIR = Pin(18, Pin.IN)
+
+#Boucle de lecture
+while True:
+    #On fait une condition pour voir si le capteur détecte un mouvement.
+    if PIR.value() == 1:
+        #On affiche "Mouvement détecté"
+        print('Mouvement détecté')
+    elif PIR.value() == 0:
+        #On affiche "Pas de mouvement détecté"
+        print('Pas de mouvement détecté')
+    sleep(8)
+```
+
+![image](https://user-images.githubusercontent.com/124889426/233395868-48f03898-2a8c-4716-b729-5801711483fc.png)
+
+[PIR_SENSOR_WELCOME](PIR_SENSOR_WELCOME.py)
+
+- Programme qui détecte les mouvements et envoie un message d'accueil sur l'écran LCD.
+
+```
+#Importation des librairies.
+from machine import Pin,I2C
+#Librairie pour l'écran LCD.
+from lcd1602 import LCD1602
+#Librairie pour le temps.
+from utime import sleep
+
+#Déclaration des Pins et variables
+#Capteur de lumière pin ADC(0)
+PIR = Pin(18, Pin.IN)
+#Configuration des Pins en utilisant le protocole I2C
+#On choisit l'index 1, pour la synchronisation la pin 7, pour les données la pin 6 et une fréquence de 400000Hz
+i2c = I2C(1, scl=Pin(7), sda=Pin(6), freq=400000) 
+#On définit l'écran LCD
+#Le type de données, le nombre de rangées et le nombre de colonnes.
+screen = LCD1602(i2c, 2, 16) 
+
+#On affiche l'écran
+screen.display()
+
+#Boucle de lecture
+while True:
+    if PIR.value() == 1:
+        screen.display()
+        #On écrit "Welcome Home !" sur l'écran LCD.
+        screen.print('Welcome Home !')
+        #On remet le curseur au tout début
+        screen.setCursor(0, 0)
+    else:
+        #On efface ce qui est écrit sur l'écran
+        screen.clear()
+    #On fait une pause de 2 secondes
+    sleep(2)
+```
+
+https://user-images.githubusercontent.com/124889426/233402145-a5050e26-c2dd-487f-8b38-e31293f84771.mp4
