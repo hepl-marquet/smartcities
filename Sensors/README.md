@@ -153,3 +153,55 @@ while True:
 https://user-images.githubusercontent.com/124889426/233386959-f42f22ea-0a71-4bf8-979f-38b1b75856e4.mp4
 
 NB : Il est important de noter que je n'ai pas mit de delay ou autre dans ma boucle de lecture et il faut faire attention à ne pas faire tourner en boucle à une telle vitesse un grand nombre de capteurs au risque de faire crasher le CPU.
+
+## [LIGHT_SENSOR_BASICS](LIGHT_SENSOR_BASICS.py)
+
+- Programme qui permet d'afficher la valeur lue par le capteur de luminosité.
+
+```
+#Importation des librairies
+from machine import ADC
+from utime import sleep
+
+#Déclaration des Pins et variables
+#Capteur de lumière pin ADC(0)
+LIGHT_SENSOR = ADC(0)
+
+#Boucle de lecture
+while True:
+    #Affiche la valeur lue par le capteur de luminosité.
+    print(LIGHT_SENSOR.read_u16())
+    sleep(1)
+    
+```
+
+![image](https://user-images.githubusercontent.com/124889426/233390227-3d566af0-1b36-4a1e-91eb-71b235fddfeb.png)
+
+## [LIGHT_SENSOR_BUZZ](LIGHT_SENSOR_BUZZ.py)
+
+- Programme qui permet de faire sonner le buzzer lorsque la lumière est allumée.
+
+```
+#Importation des librairies
+from machine import ADC, PWM, Pin
+from utime import sleep
+
+#Déclaration des Pins et variables
+#Capteur de lumière pin ADC(0)
+LIGHT_SENSOR = ADC(0)
+#Buzzer pin ADC(1)
+Buzzer = PWM(Pin(27))
+#Fréquence du buzzer
+Buzzer.freq(1046)
+
+#Boucle de lecture
+while True:
+    #On fait une condition pour voir si la lumière est allumée
+    if LIGHT_SENSOR.read_u16() >= 25000:
+        #On règle le volume du buzzer
+        Buzzer.duty_u16(1000)
+        #On fait sonner pendant 1 seconde
+        sleep(1)
+    #On coupe le volume
+    Buzzer.duty_u16(0)
+```
