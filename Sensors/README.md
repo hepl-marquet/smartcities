@@ -52,3 +52,104 @@ while True:
 ```
 
 ![image](https://user-images.githubusercontent.com/124889426/230345274-1d18e5b8-6a4d-480f-a1b9-890534b72dab.png)
+
+## [SOUND_SENSOR_BASICS](SOUND_SENSOR_BASICS.py)
+
+- Programme qui permet d'afficher la lecture du capteur son.
+- Le capteur de son a une range de 0 à 65535 dû à l'adc 16 bits.
+
+```
+#Importation des librairies
+from machine import ADC
+
+#Déclaration de la pin du capteur de son.
+SOUND_SENSOR = ADC(0)
+
+#Boucle de lecture
+while True:
+    #Affichage de la valeur lue par le capteur.
+    print(SOUND_SENSOR.read_u16())
+    
+```
+
+![image](https://user-images.githubusercontent.com/124889426/233376720-f6a0c6f0-cf79-4c3c-9075-4d1a6dda9fd8.png)
+
+On observe une multitude de valeurs obtenues par le capteur de son notamment plusieurs 0 ce qui peut parfois être dérangeant, nous verrons dans le prochain code une manière de palier à cela.
+
+## [SOUND_SENSOR_AVERAGE](SOUND_SENSOR_AVERAGE.py)
+
+- Programme qui permet d'afficher la lecture du capteur son.
+- Le capteur de son a une range de 0 à 65535 dû à l'adc 16 bits.
+- Étant donné que le capteur affiche parfois des 0, nous faisons une moyenne pour ne plus que cela se reproduise, on a ainsi une meilleur idée du volume sonore ambiant.
+
+```
+#Importation des librairies.
+from machine import ADC
+
+#Déclaration des Pins.
+SOUND_SENSOR = ADC(0)						#Capteur de son : PIN A0, range de 0-65535 soit 16bits.
+
+#Boucle de lecture.
+while True:
+    #Déclaration de la variable "average" qui sera la moyenne des mesures effectuées.
+    average = 0
+    #On crée une boucle for qui va s'effectuer 1000 fois.
+    for i in range (1000):
+        #On enregistre la valeur lue dans la variable "noise".
+        noise = SOUND_SENSOR.read_u16()
+        #On additione tous les échantillons.
+        average += noise
+    #Calcul de la moyenne.
+    average = average/1000
+    #Affichage de la moyenne.
+    print(average)
+    
+```
+
+![image](https://user-images.githubusercontent.com/124889426/233379034-073fca0f-15a9-4d19-827b-05a53f53573f.png)
+
+Ci-dessus on observe que les valeurs ne sont plus égales à 0, en revanche elles sont désormais des float car ce sont des nombres à virgules, si l'on souhaitait exploité ces données pour quelque chose il faudrait potentiellement les retransformer en entier à l'aide de la commande :
+
+```int()```
+
+## [SOUND_SENSOR_LED](SOUND_SENSOR_LED.py)
+
+- Programme qui permet d'allumer plus ou  moins fort une LED en fonction du volume ambiant.
+
+```
+#Importation des librairies.
+from machine import ADC, Pin, PWM
+
+#Déclaration des Pins.
+#Capteur de son : PIN A0, range de 0-65535 soit 16bits.
+SOUND_SENSOR = ADC(0)
+#LED : PIN D18
+LED_PWM = PWM(Pin(18))
+#Fréquence de la LED
+LED_PWM.freq(500)
+
+
+#Boucle de lecture.
+while True:
+    #Déclaration de la variable "average" qui sera la moyenne des mesures effectuées.
+    average = 0
+    #On crée une boucle for qui va s'effectuer 1000 fois.
+    for i in range (1000):
+        #On enregistre la valeur lue dans la variable "noise".
+        noise = SOUND_SENSOR.read_u16()
+        #On additione tous les échantillons.
+        average += noise
+    #Calcul de la moyenne.
+    average = average/1000
+    #On teste si la moyenne est à un certain barème et en fonction du barème, on allume plus ou moins fort la LED.
+    if average <= 9000:
+        LED_PWM.duty_u16(0)
+    elif average > 9000 and average <= 12000:
+        LED_PWM.duty_u16(15000)
+    elif average > 12000:
+        LED_PWM.duty_u16(65535)
+```
+
+https://user-images.githubusercontent.com/124889426/233386959-f42f22ea-0a71-4bf8-979f-38b1b75856e4.mp4
+
+NB : Il est important de noter que je n'ai pas mit de delay ou autre dans ma boucle de lecture et il faut faire attention à ne pas faire tourner en boucle à une telle vitesse un grand nombre de capteurs au risque de faire crasher le CPU.
