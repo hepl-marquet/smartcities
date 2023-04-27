@@ -16,7 +16,7 @@ Cette partie nous permettra d'explorer l'utilisation de la led neopixel fournie 
 
 ![LesDiffCodes](https://user-images.githubusercontent.com/124889426/234893813-c93820dc-40d3-4ce4-b5d6-7c41072b03af.png)
 
-## [LCD_BASICS](LCD_BASICS.py)
+## [NEO_BASICS](NEO_BASICS.py)
 - Programme qui permet d'afficher et de faire défiler des couleurs sur la LED neopixels de plusieurs manières différentes.
 
 ```
