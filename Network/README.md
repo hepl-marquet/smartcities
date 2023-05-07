@@ -18,6 +18,21 @@ Dans les programmes qui vont suivre nous utiliserons :
 
 ![LesDiffCodes](https://user-images.githubusercontent.com/124889426/236696105-263a380f-ed36-4ea1-a73d-e6873bfc2d7f.png)
 
+## Le dictionnaire secrets
+
+```
+my_secrets = {
+    "ssid" : "Nom Du WiFi",
+    "WiFi_pass" : "Mot de passe WiFi",
+    "OWM_API_key" : "Clé API open weather map",
+    # My location :
+    "lat" : "latitude",
+    "lon" : "longitude"
+}
+```
+
+Il faut remplacer les champs Nom du WiFi, Mot de passe WiFi, clé API open weather map, latitude & longitude par les valeurs correspondantes à votre situation.
+
 ## [NETWORK_BASICS](NETWORK_BASICS.py)
 - Programme qui établit une connexion avec un réseau WiFi.
 
