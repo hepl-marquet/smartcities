@@ -72,3 +72,5 @@ print()
 #On rompt la connexion.
 wlan.disconnect()
 ```
+
+![image](https://user-images.githubusercontent.com/124889426/236696692-4635dcaf-fc95-45cc-9418-6cf244d27f3a.png)
