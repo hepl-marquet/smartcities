@@ -4,7 +4,7 @@
 
 #Importation des librairies
 import network           #Librairie pour se connecter au WiFi
-from utime               #Librairie pour le temps
+import utime             #Librairie pour le temps
 from secrets import *    #Dictionnaire contenant les informations de connexion au WiFi
 
 wlan = network.WLAN(network.STA_IF)                       #Création et initialisation de l'objet WLAN.
